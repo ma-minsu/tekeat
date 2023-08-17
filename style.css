@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
     padding: 0px;
 }
 
@@ -181,10 +181,6 @@ h2 {
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-}
-
-body {
-    font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
 }
 
 .title {
