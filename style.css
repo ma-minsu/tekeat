@@ -15,6 +15,17 @@ body {
     margin: 0;
 }
 
+#left-section {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#right-section {
+    flex: 2; /* 우측 섹션 너비 조정 */
+}
+
 /* 모바일 레이아웃 */
 @media screen and (max-width: 1024px) { /* 화면 크기가 768px 이하일 때 적용 */
   #container {
@@ -28,18 +39,6 @@ body {
     /* 모바일에서의 섹션 스타일링 (예: 너비 100%로 설정) */
     width: 100%;
   }
-}
-
-
-#left-section {
-    flex: 1;
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-#right-section {
-    flex: 2; /* 우측 섹션 너비 조정 */
 }
 
 #category {
@@ -98,7 +97,6 @@ h2 {
     font-size: 1.5rem;
     margin: 20px 0;
 }
-
 
 #restaurants li {
     padding: 10px;
