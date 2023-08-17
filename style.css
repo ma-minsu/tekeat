@@ -13,6 +13,8 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
+    max-height: 900px; /* 목록을 표시하는 데 필요한 높이 */
+    overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
 }
 
 #left-section {
@@ -33,7 +35,6 @@ body {
   }
   #restaurants {
     max-height: 300px; /* 목록을 표시하는 데 필요한 높이 */
-    overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
   }
   #left-section, #right-section {
     /* 모바일에서의 섹션 스타일링 (예: 너비 100%로 설정) */
