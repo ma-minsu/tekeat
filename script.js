@@ -100,7 +100,7 @@ function showMap(lat, lng) {
     console.log('Creating map with coordinates:', lat, lng);
     const mapOptions = {
         center: new naver.maps.LatLng(lat, lng),
-        zoom: 10
+        zoom: 11
     };
     // 지도 객체 생성
     const map = new naver.maps.Map('map', mapOptions);
