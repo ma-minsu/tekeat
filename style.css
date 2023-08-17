@@ -10,7 +10,7 @@ body {
 }
 
 /* 모바일 레이아웃 */
-@media screen and (max-width: 768px) { /* 화면 크기가 768px 이하일 때 적용 */
+@media screen and (max-width: 1024px) { /* 화면 크기가 768px 이하일 때 적용 */
   #container {
     flex-direction: column; /* 상하 배치 */
   }
