@@ -3,6 +3,7 @@ body {
     padding: 0px;
 }
 
+/* 기본 레이아웃 (데스크탑, 태블릿) */
 #container {
     display: flex; /* Flexbox 적용 */
     flex-direction: row; /* 좌우 배치 */
@@ -10,11 +11,11 @@ body {
 
 /* 모바일 레이아웃 */
 @media screen and (max-width: 768px) { /* 화면 크기가 768px 이하일 때 적용 */
-  .container {
+  #container {
     flex-direction: column; /* 상하 배치 */
   }
 
-  .left-section, .right-section {
+  #left-section, #right-section {
     /* 모바일에서의 섹션 스타일링 (예: 너비 100%로 설정) */
     width: 100%;
   }
