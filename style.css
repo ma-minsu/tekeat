@@ -9,15 +9,18 @@ body {
     flex-direction: row; /* 좌우 배치 */
 }
 
+#restaurants {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 /* 모바일 레이아웃 */
 @media screen and (max-width: 1024px) { /* 화면 크기가 768px 이하일 때 적용 */
   #container {
     flex-direction: column; /* 상하 배치 */
   }
   #restaurants {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     max-height: 300px; /* 목록을 표시하는 데 필요한 높이 */
     overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
   }
@@ -70,12 +73,6 @@ body {
 #category-container button.active {
     background-color: #1a73e8; /* 활성 버튼 배경색 */
     color: #fff; /* 활성 버튼 글자색 */
-}
-
-#restaurants {
-    list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 #details {
