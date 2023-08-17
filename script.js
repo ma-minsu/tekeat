@@ -18,13 +18,16 @@ function populateCategories(data) {
         const button = document.createElement('button');
         button.value = category;
         button.textContent = category;
-        button.addEventListener('click', (e) => {
+        const handleClickOrTouch = (e) => {
+            e.preventDefault();
             // 다른 버튼의 active 클래스 제거
             categoryContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
             // 클릭된 버튼에 active 클래스 추가
             e.target.classList.add('active');
             filterRestaurants(data, category);
-        });
+        };
+        button.addEventListener('click', handleClickOrTouch);
+        button.addEventListener('touchend', handleClickOrTouch); // 터치 이벤트 추가
         categoryContainer.appendChild(button);
     });
 }
