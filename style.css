@@ -51,7 +51,7 @@ body {
 #category-container {
     display: flex;
     flex-wrap: wrap; /* 줄바꿈 허용 */
-    justify-content: start; /* 왼쪽 정렬 */
+    justify-content: space-between; /* 버튼 사이의 공간 균등 분배 */
 }
 
 #category-container button {
@@ -147,8 +147,8 @@ h2 {
 #images {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
-    grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
-    gap: 10px; /* 이미지 간격 */
+    grid-auto-rows: minmax(10px, 10px); /* 최소 높이 설정 */
+    gap: 5px; /* 이미지 간격 */
 }
 
 #images img {
@@ -161,8 +161,8 @@ h2 {
 }
 
 #images img:hover {
-    transform: scale(1.2); /* 이미지 확대 효과 */
-    z-index: 2; /* 호버 시 z-index 증가 */
+    transform: scale(1.5); /* 이미지 확대 효과 */
+    z-index: 1; /* 호버 시 z-index 증가 */
 }
 
 .comment-box {
