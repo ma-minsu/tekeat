@@ -50,17 +50,15 @@ body {
 
 #category-container {
     display: flex;
-    width: auto; /* 너비 자동 설정 */
-    padding: 7px 20px; /* 좌우 패딩 증가 */
     flex-wrap: wrap; /* 줄바꿈 허용 */
     justify-content: start; /* 왼쪽 정렬 */
 }
 
 #category-container button {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    width: 100px; /* 버튼 너비 고정 */
+    width: auto; /* 너비 자동 설정 */
     margin: 5px;
-    padding: 7px 12px;
+    padding: 7px 20px; /* 좌우 패딩 */
     cursor: pointer;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
