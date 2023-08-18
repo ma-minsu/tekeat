@@ -139,24 +139,28 @@ function showMap(lat, lng) {
     return map;
 }
 
+function updateLabelPosition(map, labelDiv, position) {
+    const projection = map.getProjection();
+    const positionTopLeft = projection.fromCoordToOffset(position);
+    labelDiv.style.left = `${positionTopLeft.x}px`;
+    labelDiv.style.top = `${positionTopLeft.y}px`;
+}
+
 function createLabel(map, position, content, cssClass) {
     const labelDiv = document.createElement('div');
     labelDiv.className = `custom-label ${cssClass}`;
     labelDiv.innerHTML = content;
 
-    // 레이블 위치 설정
-    naver.maps.Event.addListener(map, 'idle', () => {
-        const projection = map.getProjection();
-        const positionTopLeft = projection.fromCoordToOffset(position);
-        labelDiv.style.left = `${positionTopLeft.x}px`;
-        labelDiv.style.top = `${positionTopLeft.y}px`;
+    // 지도 줌 레벨 변경 시 레이블 위치 업데이트
+    naver.maps.Event.addListener(map, 'zoom_changed', () => {
+        updateLabelPosition(map, labelDiv, position);
     });
+
+    // 초기 레이블 위치 설정
+    updateLabelPosition(map, labelDiv, position);
 
     // 지도에 레이블 추가
     map.getPanes().floatPane.appendChild(labelDiv);
-
-    // "idle" 이벤트 수동 발생
-    naver.maps.Event.trigger(map, 'idle');
 
     return labelDiv;
 }
