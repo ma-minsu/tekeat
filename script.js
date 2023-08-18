@@ -118,6 +118,17 @@ function showMap(lat, lng) {
     // 지도 객체 생성
     const map = new naver.maps.Map('map', mapOptions);
 
+    // 클릭 이벤트 리스너 추가
+    naver.maps.Event.addListener(map, 'click', function (e) {
+        // 잠시 동안 드래그 가능하게 설정
+        map.setOptions({ draggable: true });
+
+        // 드래그가 끝나면 다시 드래그 제한
+        naver.maps.Event.once(map, 'dragend', function () {
+            map.setOptions({ draggable: false });
+        });
+    });
+
     // 회사 마커와 레이블 추가
     const companyPosition = new naver.maps.LatLng(37.5069766, 127.0396220);
     const companyMarker = new naver.maps.Marker({
