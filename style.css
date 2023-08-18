@@ -56,7 +56,7 @@ body {
 
 #category-container button {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    width: auto; /* 너비 자동 설정 */
+    width: 20px; /* 너비 자동 설정 */
     margin: 5px;
     padding: 5px 5px; /* 좌우 패딩 */
     cursor: pointer;
