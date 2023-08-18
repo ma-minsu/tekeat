@@ -145,14 +145,20 @@ h2 {
 }
 
 #images {
-    display: grid; /* 그리드 레이아웃 적용 */
-    grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개씩 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
     gap: 10px; /* 이미지 간격 */
 }
 
 #images img {
-    width: 100px;
-    height: auto;
+    width: 100%; /* 이미지 너비 100%로 변경 */
+    height: auto; /* 높이는 자동으로 비율 유지 */
+    transition: transform 0.3s ease; /* 확대/축소 효과를 위한 전환 */
+    cursor: pointer; /* 이미지 위로 마우스 올릴 때 포인터 모양 */
+}
+
+#images img:hover {
+    transform: scale(1.1); /* 이미지 확대 효과 */
 }
 
 .comment-box {
