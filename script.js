@@ -10,11 +10,16 @@ Papa.parse('lunch.csv', {
     }
 });
 
+const categoryOrder = ['한식', '중식', '일식', '양식', '아시안', '기타', '카페'];
+
 // 카테고리 채우기
 function populateCategories(data) {
     const categories = [...new Set(data.map(row => row['분류']).filter(Boolean))];
     const categoryContainer = document.getElementById('category-container');
-    categories.forEach(category => {
+
+    // 지정한 순서대로 카테고리 정렬
+    const orderedCategories = categoryOrder.filter(category => categories.includes(category));
+    orderedCategories.forEach(category => {
         const button = document.createElement('button');
         button.value = category;
         button.textContent = category;
