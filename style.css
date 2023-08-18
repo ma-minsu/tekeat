@@ -50,6 +50,8 @@ body {
 
 #category-container {
     display: flex;
+    width: auto; /* 너비 자동 설정 */
+    padding: 7px 20px; /* 좌우 패딩 증가 */
     flex-wrap: wrap; /* 줄바꿈 허용 */
     justify-content: start; /* 왼쪽 정렬 */
 }
