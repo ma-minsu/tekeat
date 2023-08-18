@@ -151,14 +151,15 @@ h2 {
 }
 
 #images img {
-    width: 100%; /* 이미지 너비 100%로 변경 */
-    height: auto; /* 높이는 자동으로 비율 유지 */
+    width: 150px; /* 이미지 너비 고정 */
+    height: 150px; /* 이미지 높이 고정 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
     transition: transform 0.3s ease; /* 확대/축소 효과를 위한 전환 */
     cursor: pointer; /* 이미지 위로 마우스 올릴 때 포인터 모양 */
 }
 
 #images img:hover {
-    transform: scale(1.1); /* 이미지 확대 효과 */
+    transform: scale(1.5); /* 이미지 확대 효과 (1.5배 확대) */
 }
 
 .comment-box {
