@@ -18,14 +18,35 @@ body {
 }
 
 #left-section {
-    flex: 0.5;
-    margin-right: 5px;
+    flex: 0.3;
+    margin-right: 10px;
     display: flex;
     flex-direction: column;
 }
 
 #right-section {
-    flex: 2.5; /* 우측 섹션 너비 조정 */
+    flex: 2.7; /* 우측 섹션 너비 조정 */
+}
+
+#images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
+    grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
+    gap: 2px; /* 이미지 간격 */
+}
+
+#images img {
+    width: 100%;
+    height: auto; /* 높이 자동 설정 */
+    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
+    transition: transform 0.3s ease; /* 확대/축소 효과를 위한 전환 */
+    cursor: pointer;
+    z-index: 1; /* z-index 추가 */
+}
+
+#images img:hover {
+    transform: scale(1.1); /* 이미지 확대 효과 */
+    z-index: 2; /* 호버 시 z-index 증가 */
 }
 
 /* 모바일 레이아웃 */
@@ -39,6 +60,9 @@ body {
   #left-section, #right-section {
     /* 모바일에서의 섹션 스타일링 (예: 너비 100%로 설정) */
     width: 100%;
+  }
+  #images img:hover {
+    transform: scale(1.5); /* 이미지 확대 효과 */
   }
 }
 
@@ -56,7 +80,7 @@ body {
 
 #category-container button {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    width: 50px; /* 너비 자동 설정 */
+    width: 80px; /* 너비 자동 설정 */
     margin: 5px;
     padding: 5px 5px; /* 좌우 패딩 */
     cursor: pointer;
@@ -142,27 +166,6 @@ h2 {
 #details-container {
     display: flex;
     flex-direction: column;
-}
-
-#images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
-    grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
-    gap: 1px; /* 이미지 간격 */
-}
-
-#images img {
-    width: 100%;
-    height: auto; /* 높이 자동 설정 */
-    object-fit: cover; /* 이미지 비율 유지하며 채우기 */
-    transition: transform 0.3s ease; /* 확대/축소 효과를 위한 전환 */
-    cursor: pointer;
-    z-index: 1; /* z-index 추가 */
-}
-
-#images img:hover {
-    transform: scale(1.5); /* 이미지 확대 효과 */
-    z-index: 1; /* 호버 시 z-index 증가 */
 }
 
 .comment-box {
