@@ -69,7 +69,11 @@ function showDetails(restaurant) {
         const imageUrls = restaurant['이미지'].split(','); // 이미지 URL을 쉼표로 구분
         imageUrls.forEach(url => {
             const img = document.createElement('img');
-            img.src = url.trim(); // 공백을 제거하여 URL을 정리
+            img.src = url;
+            img.onload = () => {
+                const rowSpan = Math.ceil((img.naturalHeight + 10) / (100 + 10));
+                img.style.gridRowEnd = `span ${rowSpan}`;
+            };
             imagesDiv.appendChild(img);
         });
     }
