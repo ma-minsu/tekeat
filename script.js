@@ -77,10 +77,6 @@ function showDetails(restaurant) {
         selectedImages.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
-            img.onload = () => {
-                const rowSpan = Math.ceil((img.naturalHeight + 10) / (100 + 10));
-                img.style.gridRowEnd = `span ${rowSpan}`;
-            };
             imagesDiv.appendChild(img);
         });
     }
