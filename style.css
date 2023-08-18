@@ -51,6 +51,39 @@ body {
     z-index: 2; /* 호버 시 z-index 증가 */
 }
 
+#category {
+    margin: 10px;
+    width: 100%;
+    height: 30px;
+}
+
+#category-container {
+    display: grid; /* 그리드 레이아웃 적용 */
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
+    gap: 5px; /* 버튼 사이의 간격 */
+}
+
+#category-container button {
+    font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
+    width: 100%; /* 너비 100%로 설정 */
+    margin: 0; /* 마진 제거 */
+    padding: 5px; /* 패딩 유지 */
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    transition: background 0.3s, color 0.3s;
+}
+
+#category-container button:hover {
+    background-color: #f0f0f0;
+}
+
+#category-container button.active {
+    background-color: #1a73e8; /* 활성 버튼 배경색 */
+    color: #fff; /* 활성 버튼 글자색 */
+}
+
 /* 모바일 레이아웃 */
 @media screen and (max-width: 1024px) { /* 화면 크기가 768px 이하일 때 적용 */
   #container {
@@ -66,39 +99,9 @@ body {
   #images img:hover {
     transform: scale(1.5); /* 이미지 확대 효과 */
   }
-}
-
-#category {
-    margin: 10px;
-    width: 100%;
-    height: 30px;
-}
-
-#category-container {
-    display: flex;
-    flex-wrap: wrap; /* 줄바꿈 허용 */
-    justify-content: space-between; /* 버튼 사이의 공간 균등 분배 */
-}
-
-#category-container button {
-    font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    width: 80px; /* 너비 자동 설정 */
-    margin: 5px;
-    padding: 5px 5px; /* 좌우 패딩 */
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    text-align: center; /* 텍스트 중앙 정렬 */
-    transition: background 0.3s, color 0.3s;
-}
-
-#category-container button:hover {
-    background-color: #f0f0f0;
-}
-
-#category-container button.active {
-    background-color: #1a73e8; /* 활성 버튼 배경색 */
-    color: #fff; /* 활성 버튼 글자색 */
+  #category-container {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* 한 줄에 모든 버튼 배치 */
+  }
 }
 
 #details {
