@@ -56,7 +56,7 @@ body {
 
 #category-container button {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    width: 20px; /* 너비 자동 설정 */
+    width: 50px; /* 너비 자동 설정 */
     margin: 5px;
     padding: 5px 5px; /* 좌우 패딩 */
     cursor: pointer;
@@ -147,8 +147,8 @@ h2 {
 #images {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
-    grid-auto-rows: minmax(10px, 10px); /* 최소 높이 설정 */
-    gap: 5px; /* 이미지 간격 */
+    grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
+    gap: 1px; /* 이미지 간격 */
 }
 
 #images img {
