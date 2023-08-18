@@ -67,7 +67,9 @@ function showDetails(restaurant) {
     imagesDiv.innerHTML = '';
     if (restaurant['이미지']) { // 이미지가 있는 경우만 처리
         const imageUrls = restaurant['이미지'].split(','); // 이미지 URL을 쉼표로 구분
-        imageUrls.forEach(url => {
+        const selectedImages = imageUrls.length > 9 ? shuffleArray(imageUrls).slice(0, 9) : imageUrls;
+
+        selectedImages.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.onload = () => {
@@ -157,7 +159,8 @@ function createLabel(map, position, content, cssClass) {
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // 두 요소의 위치를 바꿉니다.
+        [array[i], array[j]] = [array[j], array[i]]; // 요소 위치 바꾸기
     }
     return array;
 }
+
