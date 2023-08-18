@@ -67,7 +67,7 @@ function showDetails(restaurant) {
     imagesDiv.innerHTML = '';
     if (restaurant['이미지']) { // 이미지가 있는 경우만 처리
         const imageString = restaurant['이미지'];
-        const imageUrls = imageString.slice(1, -1).split("', '").map(url => url.trim());
+        const imageUrls = imageString.slice(2, -2).split(', ').map(url => url.trim());
         // 랜덤하게 5개의 이미지만 선택
         const selectedImages = shuffleArray(imageUrls).slice(0, 5);
         selectedImages.forEach(url => {
