@@ -33,6 +33,8 @@ body {
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
     grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
     gap: 2px; /* 이미지 간격 */
+    max-height: 600px; /* 이미지 섹션의 최대 높이 지정 */
+    overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
 }
 
 #images img {
