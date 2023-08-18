@@ -67,7 +67,9 @@ function showDetails(restaurant) {
     imagesDiv.innerHTML = '';
     if (restaurant['이미지']) { // 이미지가 있는 경우만 처리
         const imageUrls = restaurant['이미지'].split(','); // 이미지 URL을 쉼표로 구분
-        imageUrls.forEach(url => {
+        // 랜덤하게 5개의 이미지만 선택
+        const selectedImages = shuffleArray(imageUrls).slice(0, 5);
+        selectedImages.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             imagesDiv.appendChild(img);
@@ -148,4 +150,12 @@ function createLabel(map, position, content, cssClass) {
     naver.maps.Event.trigger(map, 'idle');
 
     return labelDiv;
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // 두 요소의 위치를 바꿉니다.
+    }
+    return array;
 }
