@@ -53,6 +53,9 @@ function showDetails(restaurant) {
             <h3>${restaurant['식당명']}</h3>
             <p>메뉴: ${restaurant['메뉴']}</p>
             <p>가격: ${restaurant['가격']}</p>
+            <p>이동시간: ${restaurant['이동시간']}</p>
+            <p>이동거리: ${restaurant['이동거리']}</p>
+            <p>횡단보도 수: ${restaurant['횡단보도']}</p>
         </a>
     `;
     // 코멘트가 있는 경우 추가
