@@ -113,7 +113,7 @@ function showMap(lat, lng) {
     console.log('Creating map with coordinates:', lat, lng);
     const mapOptions = {
         center: new naver.maps.LatLng(lat, lng),
-        zoom: 11
+        draggable: false, // 드래그 이동 제한
     };
     // 지도 객체 생성
     const map = new naver.maps.Map('map', mapOptions);
@@ -130,6 +130,10 @@ function showMap(lat, lng) {
     bounds.extend(new naver.maps.LatLng(lat, lng));
     bounds.extend(companyPosition);
     map.fitBounds(bounds);
+
+    // 현재 줌 레벨에서 1만큼 감소시키기
+    const currentZoom = map.getZoom();
+    map.setZoom(currentZoom - 1);
 
     // 지도 객체 반환
     return map;
