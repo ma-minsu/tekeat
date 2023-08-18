@@ -58,7 +58,7 @@ body {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
     width: auto; /* 너비 자동 설정 */
     margin: 5px;
-    padding: 7px 20px; /* 좌우 패딩 */
+    padding: 5px 5px; /* 좌우 패딩 */
     cursor: pointer;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
