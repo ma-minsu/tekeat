@@ -144,7 +144,7 @@ function showMap(lat, lng) {
 
     // 현재 줌 레벨에서 1만큼 감소시키기
     const currentZoom = map.getZoom();
-    map.setZoom(currentZoom + 1);
+    map.setZoom(currentZoom + 2);
 
     // 지도 객체 반환
     return map;
