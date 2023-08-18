@@ -216,12 +216,14 @@ h2 {
 
 .company-label {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    color: red;
+    color: white; /* 글자색 변경 */
+    background-color: red; /* 배경색 추가 */
 }
 
 .restaurant-label {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    color: black;
+    color: white; /* 글자색 변경 */
+    background-color: black; /* 배경색 추가 */
 }
 
 
