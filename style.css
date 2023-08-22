@@ -97,6 +97,7 @@ body {
     width: 100%;
   }
   #images {
+    grid-template-columns: repeat(1, 1fr); /* 한 줄에 1개씩 */
     max-height: none; /* 최대 높이 제거 */
     overflow-y: visible; /* 수직 오버플로우 제거 */
   }
