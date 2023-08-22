@@ -78,7 +78,7 @@ function showDetails(restaurant) {
             const img = document.createElement('img');
             img.src = url;
             img.onload = () => {
-                const rowSpan = Math.ceil((img.naturalHeight + 2) / (100 + 2));
+                const rowSpan = Math.ceil((img.naturalHeight) / (100));
                 img.style.gridRowEnd = `span ${rowSpan}`;
             };
             imagesDiv.appendChild(img);
