@@ -31,15 +31,12 @@ body {
 #images {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
-    grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
-    gap: 2px 2px; /* 행과 열 간격 동일하게 설정 */
-    max-height: 600px; /* 이미지 섹션의 최대 높이 지정 */
-    overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
+    gap: 5px 5px; /* 행과 열 간격 동일하게 설정 */
 }
 
 #images img {
     width: 100%;
-    height: auto; /* 높이 자동 설정 */
+    height: 300px;/* auto; 높이 자동 설정 */
     object-fit: cover; /* 이미지 비율 유지하며 채우기 */
     transition: transform 0.3s ease; /* 확대/축소 효과를 위한 전환 */
     cursor: pointer;
@@ -47,7 +44,7 @@ body {
 }
 
 #images img:hover {
-    transform: scale(1.1); /* 이미지 확대 효과 */
+    transform: scale(1.05); /* 이미지 확대 효과 */
     z-index: 2; /* 호버 시 z-index 증가 */
 }
 
@@ -101,8 +98,10 @@ body {
     max-height: none; /* 최대 높이 제거 */
     overflow-y: visible; /* 수직 오버플로우 제거 */
   }
+  #images img {
+    height: auto; /* 높이 자동 설정 */
   #images img:hover {
-    transform: scale(1.5); /* 이미지 확대 효과 */
+    transform: scale(1.01); /* 이미지 확대 효과 */
   }
   #category-container {
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* 한 줄에 모든 버튼 배치 */
@@ -230,5 +229,4 @@ h2 {
     color: white; /* 글자색 변경 */
     background-color: black; /* 배경색 추가 */
 }
-
 
