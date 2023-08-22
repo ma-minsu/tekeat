@@ -102,32 +102,26 @@ function showDetails(restaurant) {
     // 식당 레이블 생성
     createLabel(map, restaurantPosition, `<div>${restaurant['식당명']}</div>`, 'restaurant-label');
 
-    // 회사와 식당이 모두 보이도록 지도 범위 조정
-    const bounds = new naver.maps.LatLngBounds();
-    bounds.extend(restaurantPosition);
-    bounds.extend(new naver.maps.LatLng(37.5069766, 127.0396220)); // 회사 위치
-    map.fitBounds(bounds);
 }
 
 function showMap(lat, lng) {
     console.log('Creating map with coordinates:', lat, lng);
+    const centerLat = (lat + 37.5069766) / 2;
+    const centerLng = (lng + 127.0396220) / 2;
+
     const mapOptions = {
-        center: new naver.maps.LatLng(lat, lng),
+        center: new naver.maps.LatLng(centerLat, centerLng),
         draggable: false, // 드래그 이동 제한
+        pinchZoom: false, // 핀치 줌 비활성화 (모바일)
+        scrollWheel: false, // 마우스 스크롤 비활성화
+        zoomControl: true, // 확대/축소 버튼 활성화
+        zoom: 15, // 원하는 줌 레벨
+        zoomControlOptions: {
+            position: naver.maps.Position.LEFT_BOTTOM // 확대/축소 버튼 위치 설정
+        }
     };
     // 지도 객체 생성
     const map = new naver.maps.Map('map', mapOptions);
-
-    // 클릭 이벤트 리스너 추가
-    naver.maps.Event.addListener(map, 'click', function (e) {
-        // 잠시 동안 드래그 가능하게 설정
-        map.setOptions({ draggable: true });
-
-        // 드래그가 끝나면 다시 드래그 제한
-        naver.maps.Event.once(map, 'dragend', function () {
-            map.setOptions({ draggable: false });
-        });
-    });
 
     // 회사 마커와 레이블 추가
     const companyPosition = new naver.maps.LatLng(37.5069766, 127.0396220);
@@ -135,16 +129,6 @@ function showMap(lat, lng) {
         position: companyPosition,
         map: map
     });
-
-    // 회사와 식당이 모두 보이도록 지도 범위 조정
-    const bounds = new naver.maps.LatLngBounds();
-    bounds.extend(new naver.maps.LatLng(lat, lng));
-    bounds.extend(companyPosition);
-    map.fitBounds(bounds);
-
-    // 현재 줌 레벨에서 1만큼 감소시키기
-    const currentZoom = map.getZoom();
-    map.setZoom(currentZoom + 2);
 
     // 지도 객체 반환
     return map;
