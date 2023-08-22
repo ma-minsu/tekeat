@@ -28,7 +28,7 @@ body {
     flex: 2.7; /* 우측 섹션 너비 조정 */
 }
 
-images {
+#images {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개씩 */
     grid-auto-rows: minmax(10px, auto); /* 최소 높이 설정 */
