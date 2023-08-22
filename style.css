@@ -85,7 +85,7 @@ body {
 }
 
 /* 모바일 레이아웃 */
-@media screen and (max-width: 1024px) { /* 화면 크기가 768px 이하일 때 적용 */
+@media screen and (max-width: 1024px) { /* 화면 크기가 1024px 이하일 때 적용 */
   #container {
     flex-direction: column; /* 상하 배치 */
   }
@@ -95,6 +95,10 @@ body {
   #left-section, #right-section {
     /* 모바일에서의 섹션 스타일링 (예: 너비 100%로 설정) */
     width: 100%;
+  }
+  #images {
+    max-height: none; /* 최대 높이 제거 */
+    overflow-y: visible; /* 수직 오버플로우 제거 */
   }
   #images img:hover {
     transform: scale(1.5); /* 이미지 확대 효과 */
