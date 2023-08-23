@@ -41,6 +41,7 @@ function populateCategories(data) {
 function filterRestaurants(data, category) { // 여기에 category 매개변수를 추가
     const filteredRestaurants = data.filter(row => row['분류'] === category);
     const restaurantList = document.getElementById('restaurants');
+    restaurantList.style.display = 'block'; // 카테고리 클릭 시 표시
     restaurantList.innerHTML = '';
     filteredRestaurants.forEach(row => {
         const listItem = document.createElement('li');
@@ -53,6 +54,9 @@ function filterRestaurants(data, category) { // 여기에 category 매개변수�
 // 식당 상세 정보 표시
 function showDetails(restaurant) {
     const detailsDiv = document.getElementById('details');
+    const rightSection = document.getElementById('map');
+    rightSection.style.display = 'block'; // 식당 클릭 시 표시
+
     detailsDiv.innerHTML = `
         <a href="${restaurant['링크']}" target="_blank" id="details-link">
             <h3>${restaurant['식당명']}</h3>
