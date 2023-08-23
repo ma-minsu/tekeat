@@ -1,5 +1,6 @@
 api_id = 'gol747hita'
 api_key = 'wAFxGpcZNrfKXmAxRjK20Ccrfm7lTE4YnDvjwOPI'
+let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
 Papa.parse('lunch.csv', {
@@ -125,7 +126,7 @@ function showMap(lat, lng) {
         }
     };
     // 지도 객체 생성
-    const map = new naver.maps.Map('map', mapOptions);
+    map = new naver.maps.Map('map', mapOptions);
 
     // 회사 마커와 레이블 추가
     const companyPosition = new naver.maps.LatLng(37.5069766, 127.0396220);
@@ -170,4 +171,15 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]]; // 요소 위치 바꾸기
     }
     return array;
+}
+
+function toggleDrag() {
+    const button = document.getElementById('toggle-drag');
+    if (map.getOptions('draggable')) {
+        map.setOptions({ draggable: false, pinchZoom: false, scrollWheel: false });
+        button.textContent = "Enable Drag";
+    } else {
+        map.setOptions({ draggable: true, pinchZoom: true, scrollWheel: true });
+        button.textContent = "Disable Drag";
+    }
 }
