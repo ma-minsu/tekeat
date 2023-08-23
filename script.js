@@ -11,6 +11,21 @@ Papa.parse('lunch.csv', {
     }
 });
 
+window.onload = function() {
+    const collectiveIntelligence = document.getElementById('collective-intelligence');
+    collectiveIntelligence.addEventListener('click', resetPage);
+};
+
+function resetPage() {
+    // 페이지 초기화 로직
+    // 예를 들어, 특정 요소를 숨기거나 초기 상태로 되돌립니다.
+    document.getElementById('restaurants').style.display = 'none';
+    document.getElementById('details').style.display = 'none';
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('images').style.display = 'none';
+    // 필요한 다른 초기화 코드를 여기에 추가합니다.
+}
+
 const categoryOrder = ['한식', '중식', '일식', '양식', '아시안', '기타', '카페'];
 
 // 카테고리 채우기
@@ -56,8 +71,7 @@ function filterRestaurants(data, category) { // 여기에 category 매개변수�
 function showDetails(restaurant) {
     const detailsDiv = document.getElementById('details');
     const rightSection = document.getElementById('map');
-    rightSection.style.display = 'block'; // 식당 클릭 시 표시
-
+   
     detailsDiv.innerHTML = `
         <a href="${restaurant['링크']}" target="_blank" id="details-link">
             <h3>${restaurant['식당명']}</h3>
@@ -86,7 +100,9 @@ function showDetails(restaurant) {
         });
     }
 
-    detailsDiv.style.display = 'block';
+    detailsDiv.style.display = 'flex';
+    rightSection.style.display = 'flex'; // 식당 클릭 시 지도 스타일 표시
+    imagesDiv.style.display = 'grid'; // 식당 클릭 시 스타일 표시
 
     // 식당의 마커와 레이블 추가
     const restaurantLat = parseFloat(restaurant['위도']);
