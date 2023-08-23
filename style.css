@@ -129,6 +129,21 @@ body {
     font-size: 12px;
 }
 
+#details-link {
+    display: block; /* 블록 요소로 설정 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-decoration: none; /* 밑줄 제거 */
+    color: #333; /* 텍스트 색상 설정 */
+    cursor: pointer; /* 포인터 표시 */
+    height: 250px;
+}
+
+#details-link:hover {
+    background-color: #f0f0f0; /* 호버 효과 */
+}
+
 /* 모바일 레이아웃 */
 @media screen and (max-width: 1024px) { /* 화면 크기가 1024px 이하일 때 적용 */
   #container {
@@ -161,6 +176,10 @@ body {
   }
   #details {
     margin-right: 0px;
+
+  }
+  #details-link {
+    height: auto;
   }
   #map {
     flex: none;
@@ -169,6 +188,7 @@ body {
   }
   .comment-box {
     margin-bottom: 0px;
+    height: auto;
   }
 }
 
@@ -194,21 +214,6 @@ h2 {
 }
 
 #restaurants li:hover {
-    background-color: #f0f0f0; /* 호버 효과 */
-}
-
-#details-link {
-    display: block; /* 블록 요소로 설정 */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-decoration: none; /* 밑줄 제거 */
-    color: #333; /* 텍스트 색상 설정 */
-    cursor: pointer; /* 포인터 표시 */
-    height: 250px;
-}
-
-#details-link:hover {
     background-color: #f0f0f0; /* 호버 효과 */
 }
 
@@ -262,3 +267,9 @@ h2 {
     background-color: black; /* 배경색 추가 */
 }
 
+#toggle-drag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
