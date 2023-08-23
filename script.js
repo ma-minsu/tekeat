@@ -23,6 +23,11 @@ function resetPage() {
     document.getElementById('details').style.display = 'none';
     document.getElementById('map').style.display = 'none';
     document.getElementById('images').style.display = 'none';
+    const activeButtons = document.querySelectorAll('#category-container button.active');
+    activeButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
     // 필요한 다른 초기화 코드를 여기에 추가합니다.
 }
 
