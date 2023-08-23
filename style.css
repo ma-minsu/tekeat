@@ -1,6 +1,7 @@
 body {
     font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
     padding: 0px;
+    overflow-y: scroll; /* 스크롤바 항상 표시 */
 }
 
 /* 기본 레이아웃 (데스크탑, 태블릿) */
@@ -17,7 +18,7 @@ body {
     padding: 5px;
     margin-top: 10px;
     max-height: 700px; /* 목록을 표시하는 데 필요한 높이 */
-    overflow-y: auto; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
+    overflow-y: overlay; /* 수직 오버플로우가 있을 경우 스크롤 표시 */
     border: 1px solid #e0e0e0;
     background-color: #f9f9f9;
 }
@@ -193,15 +194,24 @@ body {
 }
 
 h1 {
-    font-size: 1.5rem; /* 크기 변경 */
-    margin-bottom: 20px;
-    color: #1a73e8; /* 색상 변경 */
-    text-align: center; /* 중앙 정렬 */
+    text-align: center;
+    line-height: 50px;
 }
 
-h2 {
-    font-size: 1.5rem;
-    margin: 20px 0;
+h1:active {
+    transform: scale(0.95); /* 눌림 효과를 위해 크기 축소 */
+}
+
+#collective-intelligence {
+    font-size: 2.0rem;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    color: #1a73e8;
+    cursor: pointer;
+}
+
+#collective-intelligence:hover {
+    color: #FF5733;
 }
 
 #restaurants li {
