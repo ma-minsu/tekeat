@@ -3,14 +3,16 @@ api_key = 'wAFxGpcZNrfKXmAxRjK20Ccrfm7lTE4YnDvjwOPI'
 let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
-Papa.parse(["lunch_download.csv", "lunch_info.csv"], {
-    download: true,
-    header: true,
-    complete: function(results) {
-        populateCategories(results.data);
-    }
-});
+const lunchDownloadFile = document.getElementById("lunchDownloadFile").files[0];
+const lunchInfoFile = document.getElementById("lunchInfoFile").files[0];
 
+Papa.parse([lunchDownloadFile, lunchInfoFile], {
+  download: true,
+  header: true,
+  complete: function(results) {
+    populateCategories(results.data);
+  }
+});
 
 window.onload = function() {
     const collectiveIntelligence = document.getElementById('collective-intelligence');
