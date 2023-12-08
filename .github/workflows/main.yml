@@ -7,4 +7,3 @@ jobs:
         run: |
           echo "TEKEAT_MAP_ID: $TEKEAT_MAP_ID"
           echo "TEKEAT_MAP_KEY: $TEKEAT_MAP_KEY"
-          echo "NODE_ENV: $NODE_ENV"
