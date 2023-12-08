@@ -85,7 +85,7 @@ function updateSortButtonStyle() {
 // 카테고리 클릭 시 초기 정렬 적용
 function setCurrentCategory(category) {
     currentCategory = category;
-    filterRestaurants(currentCategory);
+    filterRestaurants(data, category); // 정렬 기준을 전달하지 않고, 카테고리만 전달
     updateSortButtonStyle();
 }
 
