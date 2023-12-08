@@ -25,8 +25,11 @@ Papa.parse('lunch.csv', {
     complete: function(results) {
         const transformedData = results.data.map(transformDistance);
         populateCategories(transformedData);
+        // filterRestaurants 함수 호출 시 데이터 전달
+        filterRestaurants(transformedData);
     }
 });
+
 
 window.onload = function() {
     const collectiveIntelligence = document.getElementById('collective-intelligence');
@@ -105,7 +108,8 @@ function getCurrentSort() {
     return currentSort;
 }
 
-function filterRestaurants() {
+// 식당 목록 필터링
+function filterRestaurants(data) {
     const currentSort = getCurrentSort();
 
     const filteredRestaurants = data
@@ -123,6 +127,7 @@ function filterRestaurants() {
         restaurantList.appendChild(listItem);
     });
 }
+
 
 // 식당 상세 정보 표시
 function showDetails(restaurant) {
