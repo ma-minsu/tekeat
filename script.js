@@ -79,9 +79,18 @@ function populateCategories(data) {
 // 식당 목록 필터링
 function filterRestaurants(data, category, selectedCategory) { // 여기에 category 매개변수를 추가
     const filteredRestaurants = data.filter(row => row['분류'] === category);
+
+    // 이동거리를 기준으로 오름차순 정렬
+    filteredRestaurants.sort((a, b) => {
+        const distanceA = parseFloat(a['이동거리']);
+        const distanceB = parseFloat(b['이동거리']);
+        return distanceA - distanceB;
+    });
+
     const restaurantList = document.getElementById('restaurants');
-    restaurantList.style.display = 'block'; // 카테고리 클릭 시 표시
+    restaurantList.style.display = 'block';
     restaurantList.innerHTML = '';
+
     filteredRestaurants.forEach(row => {
         const listItem = document.createElement('li');
         listItem.textContent = row['식당명'];
