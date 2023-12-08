@@ -2,8 +2,8 @@ secrets:
   - name: TEKEAT_MAP_ID
   - name: TEKEAT_MAP_KEY
 
-api_id = ${{ secrets.TEKEAT_MAP_ID }}
-api_key = ${{ secrets.TEKEAT_MAP_KEY }}
+api_id = ${{ secrets.TEKEAT_MAP_ID }};
+api_key = ${{ secrets.TEKEAT_MAP_KEY }};
 let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
@@ -35,7 +35,7 @@ function resetPage() {
     // 필요한 다른 초기화 코드를 여기에 추가합니다.
 }
 
-const categoryOrder = ['한식', '중식', '일식', '양식', '아시안', '기타', '카페'];
+const categoryOrder = ['한식', '중식', '돈까스·회·일식', '버거·양식', '아시안', '분식', '디저트·카페', '샐러드', '기타'];
 
 // 카테고리 채우기
 function populateCategories(data) {
