@@ -1,29 +1,17 @@
 const api_id = "${{ secrets.TEKEAT_MAP_ID }}";
 const api_key = "${{ secrets.TEKEAT_MAP_KEY }}";
 
+
+api_id = 'gol747hita'
+api_key = 'wAFxGpcZNrfKXmAxRjK20Ccrfm7lTE4YnDvjwOPI'
 let map; // 전역 변수로 지도 객체 선언
 
-// 이동거리를 통일하는 함수
-function transformDistance(row) {
-    if (row && row['이동거리'] !== undefined && typeof row['이동거리'] === 'string') {
-        const distanceMatch = row['이동거리'].match(/(\d+(\.\d+)?)\s*([km]+)/i);
-        if (distanceMatch) {
-            const [_, value, , unit] = distanceMatch;  // 배열 구조 분해 활용
-            // 'km'를 'm'로 변환
-            if (unit && unit.toLowerCase() === 'km') {
-                row['이동거리'] = (parseFloat(value) * 1000).toString() + 'm';
-            }
-        }
-    }
-    return row;
-}
-
+// CSV 파일에서 데이터 로드
 Papa.parse('lunch.csv', {
     download: true,
     header: true,
     complete: function(results) {
-        const transformedData = results.data.map(transformDistance);
-        populateCategories(transformedData);
+        populateCategories(results.data);
     }
 });
 
@@ -34,22 +22,20 @@ window.onload = function() {
 
 function resetPage() {
     // 페이지 초기화 로직
-    const elementsToHide = ['restaurants', 'details', 'map', 'images'];
-    elementsToHide.forEach(elementId => {
-        const element = document.getElementById(elementId);
-        if (element) {
-            element.style.display = 'none';
-        }
-    });
-    // 활성화된 버튼 초기화
+    // 예를 들어, 특정 요소를 숨기거나 초기 상태로 되돌립니다.
+    document.getElementById('restaurants').style.display = 'none';
+    document.getElementById('details').style.display = 'none';
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('images').style.display = 'none';
     const activeButtons = document.querySelectorAll('#category-container button.active');
     activeButtons.forEach(button => {
         button.classList.remove('active');
     });
+
+    // 필요한 다른 초기화 코드를 여기에 추가합니다.
 }
 
-
-const categoryOrder = ['한식', '중식', '돈까스·회·일식', '버거·양식', '아시안', '분식', '디저트·카페', '샐러드', '기타'];
+const categoryOrder = ['한식', '중식', '일식', '양식', '아시안', '기타', '카페'];
 
 // 카테고리 채우기
 function populateCategories(data) {
@@ -68,7 +54,7 @@ function populateCategories(data) {
             categoryContainer.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
             // 클릭된 버튼에 active 클래스 추가
             e.target.classList.add('active');
-            filterRestaurants(data, category, e.target.value);
+            filterRestaurants(data, category);
         };
         button.addEventListener('click', handleClickOrTouch);
         button.addEventListener('touchend', handleClickOrTouch); // 터치 이벤트 추가
@@ -77,48 +63,17 @@ function populateCategories(data) {
 }
 
 // 식당 목록 필터링
-function filterRestaurants(data, category, selectedCategory) { // 여기에 category 매개변수를 추가
+function filterRestaurants(data, category) { // 여기에 category 매개변수를 추가
     const filteredRestaurants = data.filter(row => row['분류'] === category);
-
-    // 이동거리를 기준으로 오름차순 정렬
-    filteredRestaurants.sort((a, b) => {
-        const distanceA = parseFloat(a['이동거리']);
-        const distanceB = parseFloat(b['이동거리']);
-        return distanceA - distanceB;
-    });
-
     const restaurantList = document.getElementById('restaurants');
-    restaurantList.style.display = 'block';
+    restaurantList.style.display = 'block'; // 카테고리 클릭 시 표시
     restaurantList.innerHTML = '';
-
     filteredRestaurants.forEach(row => {
         const listItem = document.createElement('li');
         listItem.textContent = row['식당명'];
         listItem.addEventListener('click', () => showDetails(row));
         restaurantList.appendChild(listItem);
     });
-
-    // 지도에 마커와 레이블 추가
-    const restaurantLat = parseFloat(row['위도']);
-    const restaurantLng = parseFloat(row['경도']);
-    const restaurantPosition = new naver.maps.LatLng(restaurantLat, restaurantLng);
-    const companyPosition = new naver.maps.LatLng(37.5069766, 127.0396220);
-
-    if (selectedCategory === category) {
-        map.setOptions({ draggable: true, pinchZoom: true, scrollWheel: true });
-        const restaurantMarker = new naver.maps.Marker({
-            position: restaurantPosition,
-            map: map
-        });
-
-    // 회사 레이블 생성
-    createLabel(map, companyPosition, '<div>TEK</div>', 'company-label');
-
-    // 식당 레이블 생성
-    createLabel(map, restaurantPosition, `<div>${row['식당명']}</div>`, 'restaurant-label');
-  } else {
-    map.setOptions({ draggable: false, pinchZoom: false, scrollWheel: false });
-  }
 }
 
 // 식당 상세 정보 표시
@@ -157,6 +112,26 @@ function showDetails(restaurant) {
     detailsDiv.style.display = 'flex';
     rightSection.style.display = 'flex'; // 식당 클릭 시 지도 스타일 표시
     imagesDiv.style.display = 'grid'; // 식당 클릭 시 스타일 표시
+
+    // 식당의 마커와 레이블 추가
+    const restaurantLat = parseFloat(restaurant['위도']);
+    const restaurantLng = parseFloat(restaurant['경도']);
+    const restaurantPosition = new naver.maps.LatLng(restaurantLat, restaurantLng);
+    const companyPosition = new naver.maps.LatLng(37.5069766, 127.0396220);
+    
+    const map = showMap(restaurantLat, restaurantLng);
+
+    const restaurantMarker = new naver.maps.Marker({
+        position: restaurantPosition,
+        map: map
+    });
+
+    // 회사 레이블 생성
+    createLabel(map, companyPosition, '<div>TEK</div>', 'company-label');
+
+    // 식당 레이블 생성
+    createLabel(map, restaurantPosition, `<div>${restaurant['식당명']}</div>`, 'restaurant-label');
+
 }
 
 function showMap(lat, lng) {
@@ -233,4 +208,3 @@ function toggleDrag() {
         button.textContent = "Disable Drag";
     }
 }
-
