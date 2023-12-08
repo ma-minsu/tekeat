@@ -1,27 +1,5 @@
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run script with secrets
-        run: node script.js
-        env:
-          TEKEAT_MAP_ID: ${{ secrets.TEKEAT_MAP_ID }}
-          TEKEAT_MAP_KEY: ${{ secrets.TEKEAT_MAP_KEY }}
-
-api_id = process.env.TEKEAT_MAP_ID;
-api_key = process.env.TEKEAT_MAP_KEY;
+api_id = "${{ secrets.TEKEAT_MAP_ID }}";
+api_key = "${{ secrets.TEKEAT_MAP_KEY }}";
 let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
