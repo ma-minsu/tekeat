@@ -61,13 +61,23 @@ function populateCategories(data) {
 
 // 식당 목록 정렬하기
 let currentSort = 'distance'; // 초기 정렬 기준
+let currentCategory; // 현재 선택된 카테고리
 
 function toggleSort() {
     // 현재 선택된 정렬 기준을 토글합니다.
     currentSort = currentSort === 'distance' ? 'name' : 'distance';
+    // 정렬을 적용합니다. 현재 선택된 카테고리가 있을 경우에만 필터링합니다.
+    if (currentCategory) {
+        filterRestaurants(currentCategory);
+    }
+}
 
-    // 정렬을 적용합니다. 현재 선택된 카테고리도 함께 전달합니다.
-    filterRestaurants(category);
+function setCurrentCategory(category) {
+    // 현재 선택된 카테고리를 설정합니다.
+    currentCategory = category;
+
+    // 정렬을 적용합니다.
+    filterRestaurants(currentCategory);
 }
 
 function getCurrentSort() {
@@ -75,7 +85,7 @@ function getCurrentSort() {
 }
 
 // 식당 목록 필터링
-function filterRestaurants(data, category) {
+function filterRestaurants(category) {
     const currentSort = getCurrentSort(); // 정렬 기준 가져오기
 
     const filteredRestaurants = data
@@ -99,6 +109,7 @@ function filterRestaurants(data, category) {
         restaurantList.appendChild(listItem);
     });
 }
+
 
 
 // 식당 상세 정보 표시
