@@ -10,7 +10,7 @@ jobs:
         run: |
           TEKEAT_MAP_ID=${{ secrets.TEKEAT_MAP_ID }}
           TEKEAT_MAP_KEY=${{ secrets.TEKEAT_MAP_KEY }}
-          node script.js
+          ./script.js
         env:
           TEKEAT_MAP_ID: ${{ secrets.TEKEAT_MAP_ID }}
           TEKEAT_MAP_KEY: ${{ secrets.TEKEAT_MAP_KEY }}
