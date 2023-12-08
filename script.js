@@ -1,9 +1,6 @@
 const api_id = "${{ secrets.TEKEAT_MAP_ID }}";
 const api_key = "${{ secrets.TEKEAT_MAP_KEY }}";
 
-
-api_id = 'gol747hita'
-api_key = 'wAFxGpcZNrfKXmAxRjK20Ccrfm7lTE4YnDvjwOPI'
 let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
