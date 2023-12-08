@@ -1,0 +1,16 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run script with secrets
+        run: |
+          TEKEAT_MAP_ID=${{ secrets.TEKEAT_MAP_ID }}
+          TEKEAT_MAP_KEY=${{ secrets.TEKEAT_MAP_KEY }}
+          node script.js
+        env:
+          TEKEAT_MAP_ID: ${{ secrets.TEKEAT_MAP_ID }}
+          TEKEAT_MAP_KEY: ${{ secrets.TEKEAT_MAP_KEY }}
