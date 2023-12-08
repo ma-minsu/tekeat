@@ -1,5 +1,5 @@
-const api_id = process.env.TEKEAT_MAP_ID;
-const api_key = process.env.TEKEAT_MAP_KEY;
+const api_id = "${{ secrets.TEKEAT_MAP_ID }}";
+const api_key = "${{ secrets.TEKEAT_MAP_KEY }}";
 
 let map; // 전역 변수로 지도 객체 선언
 
