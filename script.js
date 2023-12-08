@@ -5,12 +5,14 @@ let map; // 전역 변수로 지도 객체 선언
 
 // 이동거리를 통일하는 함수
 function transformDistance(row) {
-    const distanceMatch = row['이동거리'].match(/(\d+(\.\d+)?)\s*([km]+)/i);
-    if (distanceMatch) {
-        const [_, value, , unit] = distanceMatch;  // 배열 구조 분해 활용
-        // 'km'를 'm'로 변환
-        if (unit.toLowerCase() === 'km') {
-            row['이동거리'] = (parseFloat(value) * 1000).toString() + 'm';
+    if (row && row['이동거리'] !== undefined && typeof row['이동거리'] === 'string') {
+        const distanceMatch = row['이동거리'].match(/(\d+(\.\d+)?)\s*([km]+)/i);
+        if (distanceMatch) {
+            const [_, value, , unit] = distanceMatch;  // 배열 구조 분해 활용
+            // 'km'를 'm'로 변환
+            if (unit && unit.toLowerCase() === 'km') {
+                row['이동거리'] = (parseFloat(value) * 1000).toString() + 'm';
+            }
         }
     }
     return row;
