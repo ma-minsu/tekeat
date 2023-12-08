@@ -42,23 +42,6 @@ body {
     flex: 1; /* 상단과 하단을 동일한 비율로 할당 */
 }
 
-#sorting-buttons {
-    margin: 10px;
-}
-
-#sorting-buttons button {
-    font-family: 'Cafe24Supermagic-Bold-v1.0', sans-serif;
-    margin-right: 10px;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    padding: 5px;
-    transition: background 0.3s, color 0.3s;
-}
-
-#sorting-buttons button:hover {
-    background-color: #f0f0f0;
-}
 
 #images {
     flex: 1; /* 상단과 하단을 동일한 비율로 할당 */
