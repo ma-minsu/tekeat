@@ -19,18 +19,23 @@ window.onload = function() {
 
 function resetPage() {
     // 페이지 초기화 로직
-    // 예를 들어, 특정 요소를 숨기거나 초기 상태로 되돌립니다.
-    document.getElementById('restaurants').style.display = 'none';
-    document.getElementById('details').style.display = 'none';
-    document.getElementById('map').style.display = 'none';
-    document.getElementById('images').style.display = 'none';
+    const elementsToHide = ['restaurants', 'details', 'map', 'images'];
+    elementsToHide.forEach(elementId => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+
+    // 활성화된 버튼 초기화
     const activeButtons = document.querySelectorAll('#category-container button.active');
     activeButtons.forEach(button => {
         button.classList.remove('active');
     });
 
-    // 필요한 다른 초기화 코드를 여기에 추가합니다.
+    // 추가적인 초기화 코드를 필요에 따라 추가합니다.
 }
+
 
 const categoryOrder = ['한식', '중식', '돈까스·회·일식', '버거·양식', '아시안', '분식', '디저트·카페', '샐러드', '기타'];
 
@@ -64,20 +69,24 @@ let currentSort = 'distance'; // 초기 정렬 기준
 let currentCategory; // 현재 선택된 카테고리
 
 function toggleSort() {
-    // 현재 선택된 정렬 기준을 토글합니다.
     currentSort = currentSort === 'distance' ? 'name' : 'distance';
-    // 정렬을 적용합니다. 현재 선택된 카테고리가 있을 경우에만 필터링합니다.
     if (currentCategory) {
         filterRestaurants(currentCategory);
     }
+    updateSortButtonStyle();
 }
 
-function setCurrentCategory(category) {
-    // 현재 선택된 카테고리를 설정합니다.
-    currentCategory = category;
+// 정렬 버튼 스타일링 및 활성화 표시
+function updateSortButtonStyle() {
+    const sortButton = document.getElementById('toggle-sort');
+    sortButton.textContent = `Sort by ${currentSort === 'distance' ? 'Name' : 'Distance'}`;
+}
 
-    // 정렬을 적용합니다.
+// 카테고리 클릭 시 초기 정렬 적용
+function setCurrentCategory(category) {
+    currentCategory = category;
     filterRestaurants(currentCategory);
+    updateSortButtonStyle();
 }
 
 function getCurrentSort() {
@@ -85,7 +94,7 @@ function getCurrentSort() {
 }
 
 // 식당 목록 필터링
-function filterRestaurants(category) {
+function filterRestaurants(data, category) {
     const currentSort = getCurrentSort(); // 정렬 기준 가져오기
 
     const filteredRestaurants = data
