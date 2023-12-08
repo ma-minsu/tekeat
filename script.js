@@ -2,8 +2,8 @@ secrets:
   - name: TEKEAT_MAP_ID
   - name: TEKEAT_MAP_KEY
 
-api_id = ${{ secrets.TEKEAT_MAP_ID }};
-api_key = ${{ secrets.TEKEAT_MAP_KEY }};
+api_id = "${{ secrets.TEKEAT_MAP_ID }}";
+api_key = "${{ secrets.TEKEAT_MAP_KEY }}";
 let map; // 전역 변수로 지도 객체 선언
 
 // CSV 파일에서 데이터 로드
