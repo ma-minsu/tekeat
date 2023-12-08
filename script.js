@@ -59,9 +59,29 @@ function populateCategories(data) {
     });
 }
 
+// 식당 목록 정렬하기
+let currentSort = 'distance'; // 초기 정렬 기준
+
+function sortRestaurants(sortType) {
+    currentSort = sortType;
+    filterRestaurants(data, category, selectedCategory);
+}
+
 // 식당 목록 필터링
-function filterRestaurants(data, category) { // 여기에 category 매개변수를 추가
-    const filteredRestaurants = data.filter(row => row['분류'] === category);
+function filterRestaurants(data, category) {
+    const currentSort = getCurrentSort(); // 정렬 기준 가져오기
+
+    const filteredRestaurants = data
+        .filter(row => row['분류'] === category)
+        .sort((a, b) => {
+            if (currentSort === 'distance') {
+                return parseFloat(a['이동거리']) - parseFloat(b['이동거리']);
+            } else if (currentSort === 'name') {
+                return a['식당명'].localeCompare(b['식당명']);
+            }
+            // 추가적인 정렬 기준이 있다면 여기에 계속 추가할 수 있습니다.
+        });
+
     const restaurantList = document.getElementById('restaurants');
     restaurantList.style.display = 'block'; // 카테고리 클릭 시 표시
     restaurantList.innerHTML = '';
@@ -71,6 +91,16 @@ function filterRestaurants(data, category) { // 여기에 category 매개변수�
         listItem.addEventListener('click', () => showDetails(row));
         restaurantList.appendChild(listItem);
     });
+}
+
+function getCurrentSort() {
+    // 현재 선택된 정렬 기준을 반환하고, 다음에 클릭될 기준을 업데이트합니다.
+    if (currentSort === 'distance') {
+        currentSort = 'name';
+    } else {
+        currentSort = 'distance';
+    }
+    return currentSort;
 }
 
 // 식당 상세 정보 표시
