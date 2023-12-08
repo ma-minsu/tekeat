@@ -18,6 +18,15 @@ function transformDistance(row) {
     return row;
 }
 
+Papa.parse('lunch.csv', {
+    download: true,
+    header: true,
+    complete: function(results) {
+        const transformedData = results.data.map(transformDistance);
+        populateCategories(transformedData);
+    }
+});
+
 window.onload = function() {
     const collectiveIntelligence = document.getElementById('collective-intelligence');
     collectiveIntelligence.addEventListener('click', resetPage);
