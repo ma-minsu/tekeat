@@ -32,7 +32,7 @@ function resetPage() {
     // 필요한 다른 초기화 코드를 여기에 추가합니다.
 }
 
-const categoryOrder = ['한식', '중식', '일식', '양식', '아시안', '기타', '카페'];
+const categoryOrder = ['한식', '중식', '돈까스·회·일식', '버거·양식', '아시안', '분식', '디저트·카페', '샐러드', '기타'];
 
 // 카테고리 채우기
 function populateCategories(data) {
