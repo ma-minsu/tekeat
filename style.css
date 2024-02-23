@@ -284,3 +284,13 @@ h1:active {
     left: 10px;
     z-index: 1000;
 }
+
+#visitor-info {
+    float: right; /* 우측 정렬 */
+    font-size: 0.8em; /* 글자 크기 조정 */
+    margin-top: 10px; /* 상단 여백 조정 */
+}
+
+#collective-intelligence {
+    display: inline-block; /* 인라인 블록 요소로 변경 */
+}
