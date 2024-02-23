@@ -194,9 +194,14 @@ body {
   }
 }
 
-h1 {
+#header-container {
     text-align: center;
+    margin-bottom: 20px; /* 제목 아래 적당한 여백 추가 */
+}
+
+h1 {
     line-height: 50px;
+    margin: 0; /* 제목 바로 아래 여백 제거 */
 }
 
 h1:active {
@@ -286,11 +291,12 @@ h1:active {
 }
 
 #visitor-info {
-    float: right; /* 우측 정렬 */
+    text-align: right; /* 우측 정렬 */
     font-size: 0.8em; /* 글자 크기 조정 */
     margin-top: 10px; /* 상단 여백 조정 */
+    display: block; /* 블록 레벨 요소로 변경 */
+    position: absolute; /* 절대 위치 사용 */
+    right: 0; /* 우측 정렬 */
+    top: 0; /* 상단에 위치 */
 }
 
-#collective-intelligence {
-    display: inline-block; /* 인라인 블록 요소로 변경 */
-}
