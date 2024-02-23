@@ -205,3 +205,14 @@ function toggleDrag() {
         button.textContent = "Disable Drag";
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 여기에 Google Analytics API 호출 코드를 추가하여 실제 데이터를 가져옵니다.
+    // 임시 값으로 설정
+    var todayVisitors = 123; // 오늘 방문자 수
+    var totalVisitors = 4567; // 전체 방문자 수
+
+    // HTML 요소에 데이터 설정
+    document.getElementById("today-visitors").textContent = todayVisitors;
+    document.getElementById("total-visitors").textContent = totalVisitors;
+});
