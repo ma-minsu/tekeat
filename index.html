@@ -7,34 +7,54 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=gol747hita"></script>
     <script src="script.js" defer></script>
-    <title>뭐먹지</title>
-    <!-- Google tag (gtag.js) -->
+    <title>오늘 뭐먹지 - TEKEAT</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6WMB8NHPK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-Q6WMB8NHPK');
     </script>
 </head>
 <body>
     <div id="header-container">
         <h1>
-            <span id="collective-intelligence">오늘 뭐먹지 - 집단지성</span>
+            <span id="collective-intelligence">오늘 뭐먹지</span>
         </h1>
+        <p id="sub-title">랜덤 추천, 빠른 필터, 거리 중심 정렬까지 한 번에.</p>
     </div>
+
+    <section id="control-panel" aria-label="탐색 옵션">
+        <input id="search-input" type="search" placeholder="식당명/메뉴 검색" aria-label="식당명 혹은 메뉴 검색">
+        <select id="sort-select" aria-label="정렬 기준">
+            <option value="default">기본 정렬</option>
+            <option value="distance">가까운 순</option>
+            <option value="time">이동시간 짧은 순</option>
+            <option value="name">이름 가나다순</option>
+        </select>
+        <label id="closed-filter-wrapper">
+            <input id="include-closed" type="checkbox">
+            폐업 포함
+        </label>
+        <button id="random-pick" type="button">🎲 오늘의 추천</button>
+    </section>
+
+    <section id="summary" aria-live="polite">
+        <span class="summary-pill" id="summary-total">전체 0곳</span>
+        <span class="summary-pill" id="summary-category">카테고리 미선택</span>
+        <span class="summary-pill" id="summary-filter">필터 없음</span>
+    </section>
+
     <div id="container">
         <div id="left-section">
-            <div id="category-container">
-            </div>
+            <div id="category-container"></div>
             <ul id="restaurants"></ul>
         </div>
         <div id="right-section">
             <div id="right-top-section">
                 <div id="details"></div>
                 <div id="map">
-                    <button id="toggle-drag" onclick="toggleDrag()"></button>
+                    <button id="toggle-drag" onclick="toggleDrag()">지도 이동 켜기</button>
                 </div>
             </div>
             <div id="images"></div>
